@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="badminton_association.com.example.honza.badmintonassociation.Activities.Player.PlayerMenuActivity">
+
+    <Button
+        android:id="@+id/myAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:elevation="0dp"
+        android:text="my account"
+        app:layout_constraintBottom_toTopOf="@+id/tournamentsButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/tournamentsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tournaments"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/venuesButton" />
+
+    <Button
+        android:id="@+id/venuesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="venues"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/matchesButton" />
+
+    <Button
+        android:id="@+id/matchesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="matches"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="24dp" />
+</android.support.constraint.ConstraintLayout>
