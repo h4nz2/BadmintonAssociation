@@ -12,6 +12,8 @@ import badminton_association.com.example.honza.badmintonassociation.Models.Enum;
 import badminton_association.com.example.honza.badmintonassociation.Models.Player;
 import badminton_association.com.example.honza.badmintonassociation.R;
 
+import static badminton_association.com.example.honza.badmintonassociation.Activities.Player.PlayerMenuActivity.PLAYER;
+
 public class PlayerMyAccountActivity extends AppCompatActivity {
 
     private EditText nameEdit;
@@ -33,7 +35,7 @@ public class PlayerMyAccountActivity extends AppCompatActivity {
         genderRadioGroup = (RadioGroup) findViewById(R.id.genderRadioGroup);
         updateButton = (Button) findViewById(R.id.updateButton);
 
-        mPlayer = (Player) getIntent().getSerializableExtra("player");
+        mPlayer = (Player) getIntent().getSerializableExtra(PLAYER);
 
         nameEdit.setText(mPlayer.getName());
         phoneEdit.setText(mPlayer.getPhone());
@@ -48,6 +50,7 @@ public class PlayerMyAccountActivity extends AppCompatActivity {
                 mPlayer.setAddress(addressEdit.getText().toString());
                 mPlayer.setGender(Enum.Gender.fromInteger(genderRadioGroup.getCheckedRadioButtonId()));
                 mPlayer.save();
+                finish();
             }
         });
 

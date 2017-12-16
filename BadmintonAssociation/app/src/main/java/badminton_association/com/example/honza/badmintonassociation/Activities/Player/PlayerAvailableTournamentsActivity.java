@@ -20,27 +20,29 @@ import retrofit.client.Response;
 
 import static badminton_association.com.example.honza.badmintonassociation.Activities.Player.PlayerMenuActivity.PLAYER_ID;
 
-public class PlayerTournamentsActivity extends AppCompatActivity {
+public class PlayerAvailableTournamentsActivity extends AppCompatActivity {
     private RecyclerView tournamentsList;
     private List<Tournament> mTournaments;
     private PlayerTournamentsListAdapter adapter;
+    private int playerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_tournaments);
+        setContentView(R.layout.activity_player_available_tournaments);
 
         tournamentsList = (RecyclerView) findViewById(R.id.tournamentsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         tournamentsList.setLayoutManager(mLayoutManager);
         tournamentsList.setHasFixedSize(true);
 
+        playerID = getIntent().getIntExtra(PLAYER_ID, 0);
+
         RestAdapter radapter=new RestAdapter.Builder().setEndpoint(MainActivity.URL).build();
 
         HTTPInterface restInt = radapter.create(HTTPInterface.class);
-        int playerID = getIntent().getIntExtra(PLAYER_ID, 0);
 
-        restInt.getPlayerTournaments(playerID, new Callback<List<Tournament>>() {
+        restInt.getAvailableTournaments(playerID, new Callback<List<Tournament>>() {
             @Override
             public void success(List<Tournament> tournaments, Response response) {
                 mTournaments = tournaments;
@@ -52,12 +54,11 @@ public class PlayerTournamentsActivity extends AppCompatActivity {
                 Log.d("getScores", error.getMessage());
             }
         });
-
     }
 
     public void updateUI(){
         if(adapter == null){
-            adapter = new PlayerTournamentsListAdapter(mTournaments, false, this, 0);
+            adapter = new PlayerTournamentsListAdapter(mTournaments, true, this, playerID);
             tournamentsList.setAdapter(adapter);
         }
         else

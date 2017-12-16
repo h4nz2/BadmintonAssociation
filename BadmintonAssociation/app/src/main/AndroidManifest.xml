@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="badminton_association.com.example.honza.badmintonassociation">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +20,10 @@
         </activity>
         <activity android:name=".Activities.Player.PlayerMenuActivity" />
         <activity android:name=".Activities.Player.PlayerTournamentsActivity" />
-        <activity android:name=".Activities.Player.PlayerMyAccountActivity"></activity>
+        <activity android:name=".Activities.Player.PlayerMyAccountActivity" />
+        <activity android:name=".Activities.Player.PlayerAvailableTournamentsActivity" />
+        <activity android:name=".Activities.Admin.AdminMenuActivity" />
+        <activity android:name=".Activities.Admin.AdminTournamentsActivity"></activity>
     </application>
 
 </manifest>

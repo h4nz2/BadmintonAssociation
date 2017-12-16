@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import badminton_association.com.example.honza.badmintonassociation.Activities.Admin.AdminMenuActivity;
 import badminton_association.com.example.honza.badmintonassociation.Activities.Player.PlayerMenuActivity;
 import badminton_association.com.example.honza.badmintonassociation.R;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String URL = "http://192.168.0.102:28429/BadmintonAssociationServer";
 
     private Button adminButton;
     private Button playerButton;
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent intent = new Intent(MainActivity.this, AdminMenuActivity.class);
+                startActivity(intent);
             }
         });
 
