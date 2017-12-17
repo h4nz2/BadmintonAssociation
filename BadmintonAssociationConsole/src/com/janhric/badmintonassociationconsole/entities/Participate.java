@@ -6,28 +6,15 @@
 package com.janhric.badmintonassociationconsole.entities;
 
 import java.io.Serializable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Honza
  */
-@Entity
-@Table(name = "participate")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Participate.findAll", query = "SELECT p FROM Participate p")
-    , @NamedQuery(name = "Participate.findByPlayerID", query = "SELECT p FROM Participate p WHERE p.participatePK.playerID = :playerID")
-    , @NamedQuery(name = "Participate.findByTournamentID", query = "SELECT p FROM Participate p WHERE p.participatePK.tournamentID = :tournamentID")})
 public class Participate implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
     protected ParticipatePK participatePK;
 
     public Participate() {

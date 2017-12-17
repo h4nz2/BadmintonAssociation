@@ -6,43 +6,21 @@
 package com.janhric.badmintonassociationconsole.entities;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Honza
  */
-@Entity
-@Table(name = "venue")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Venue.findAll", query = "SELECT v FROM Venue v")
-    , @NamedQuery(name = "Venue.findById", query = "SELECT v FROM Venue v WHERE v.id = :id")
-    , @NamedQuery(name = "Venue.findByName", query = "SELECT v FROM Venue v WHERE v.name = :name")
-    , @NamedQuery(name = "Venue.findByAddress", query = "SELECT v FROM Venue v WHERE v.address = :address")})
+
 public class Venue implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    
     private Integer id;
-    @Size(max = 50)
-    @Column(name = "name")
+    
     private String name;
-    @Size(max = 100)
-    @Column(name = "address")
+    
     private String address;
 
     public Venue() {

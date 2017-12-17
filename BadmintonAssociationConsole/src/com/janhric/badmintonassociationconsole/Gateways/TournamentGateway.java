@@ -5,7 +5,7 @@
  */
 package com.janhric.badmintonassociationconsole.Gateways;
 
-import com.janhric.badmintonAssociation.entities.Tournament;
+import com.janhric.badmintonassociationconsole.entities.Tournament;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

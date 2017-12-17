@@ -6,25 +6,16 @@
 package com.janhric.badmintonassociationconsole.entities;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author Honza
  */
-@Embeddable
 public class ParticipatePK implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "playerID")
+   
     private int playerID;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "tournamentID")
+   
     private int tournamentID;
 
     public ParticipatePK() {

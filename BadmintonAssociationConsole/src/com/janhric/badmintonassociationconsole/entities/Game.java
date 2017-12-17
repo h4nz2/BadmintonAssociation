@@ -7,55 +7,24 @@ package com.janhric.badmintonassociationconsole.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Honza
  */
-@Entity
-@Table(name = "game")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Game.findAll", query = "SELECT g FROM Game g")
-    , @NamedQuery(name = "Game.findById", query = "SELECT g FROM Game g WHERE g.id = :id")
-    , @NamedQuery(name = "Game.findByMatchDate", query = "SELECT g FROM Game g WHERE g.matchDate = :matchDate")
-    , @NamedQuery(name = "Game.findByHomeScore", query = "SELECT g FROM Game g WHERE g.homeScore = :homeScore")
-    , @NamedQuery(name = "Game.findByGuestscore", query = "SELECT g FROM Game g WHERE g.guestscore = :guestscore")
-    , @NamedQuery(name = "Game.findByHomePlayerId", query = "SELECT g FROM Game g WHERE g.homePlayerId = :homePlayerId")
-    , @NamedQuery(name = "Game.findByGuestPlayerId", query = "SELECT g FROM Game g WHERE g.guestPlayerId = :guestPlayerId")
-    , @NamedQuery(name = "Game.findByTournamentId", query = "SELECT g FROM Game g WHERE g.tournamentId = :tournamentId")})
+
 public class Game implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+   
     private Integer id;
-    @Column(name = "matchDate")
-    @Temporal(TemporalType.DATE)
+  
     private Date matchDate;
-    @Column(name = "homeScore")
+   
     private Integer homeScore;
-    @Column(name = "guestscore")
     private Integer guestscore;
-    @Column(name = "homePlayerId")
     private Integer homePlayerId;
-    @Column(name = "guestPlayerId")
     private Integer guestPlayerId;
-    @Column(name = "tournamentId")
     private Integer tournamentId;
 
     public Game() {
