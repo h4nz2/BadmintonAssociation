@@ -59,6 +59,8 @@ public class PlayerTournamentsListAdapter extends RecyclerView.Adapter<PlayerTou
         private TextView name;
         private TextView startdate;
         private TextView endDate;
+        private TextView venueName;
+
         private int tournamentID;
 
         public ViewHolder(View view) {
@@ -67,6 +69,7 @@ public class PlayerTournamentsListAdapter extends RecyclerView.Adapter<PlayerTou
             name = (TextView) view.findViewById(R.id.name);
             startdate = (TextView) view.findViewById(R.id.startDate);
             endDate = (TextView) view.findViewById(R.id.endDate);
+            venueName = (TextView) view.findViewById(R.id.venueName);
             if(clickable)
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -110,6 +113,7 @@ public class PlayerTournamentsListAdapter extends RecyclerView.Adapter<PlayerTou
             name.setText(tournament.getName());
             startdate.setText(tournament.getStartDate());
             endDate.setText(tournament.getEndDate());
+            venueName.setText(tournament.getVenue().getName());
             tournamentID = tournament.getId();
         }
     }

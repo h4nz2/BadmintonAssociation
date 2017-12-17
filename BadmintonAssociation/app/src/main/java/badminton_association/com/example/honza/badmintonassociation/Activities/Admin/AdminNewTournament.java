@@ -61,7 +61,7 @@ public class AdminNewTournament extends AppCompatActivity {
                 mTournament.setName(nameEdit.getText().toString());
                 mTournament.setStartDate(startDateEdit.getText().toString());
                 mTournament.setEndDate(endDateEdit.getText().toString());
-                mTournament.setVenue(mVenues.get(venuesSpinner.getSelectedItemPosition()).getId());
+                mTournament.setVenue(mVenues.get(venuesSpinner.getSelectedItemPosition()));
 
                 RestAdapter radapter=new RestAdapter.Builder().setEndpoint(MainActivity.URL).build();
 
@@ -114,5 +114,6 @@ public class AdminNewTournament extends AppCompatActivity {
             venueNames.add(venue.getName());
         }
         venuesSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, venueNames));
+        venuesSpinner.setSelection(venueNames.indexOf(mTournament.getVenue().getName()));
     }
 }

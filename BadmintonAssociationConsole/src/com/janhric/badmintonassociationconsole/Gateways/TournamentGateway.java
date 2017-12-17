@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.janhric.badmintonAssociation.Gateways;
+package com.janhric.badmintonassociationconsole.Gateways;
 
 import com.janhric.badmintonAssociation.entities.Tournament;
 import java.sql.*;
