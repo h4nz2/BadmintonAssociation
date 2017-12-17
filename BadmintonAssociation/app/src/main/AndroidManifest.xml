@@ -23,7 +23,12 @@
         <activity android:name=".Activities.Player.PlayerMyAccountActivity" />
         <activity android:name=".Activities.Player.PlayerAvailableTournamentsActivity" />
         <activity android:name=".Activities.Admin.AdminMenuActivity" />
-        <activity android:name=".Activities.Admin.AdminTournamentsActivity"></activity>
+        <activity android:name=".Activities.Admin.AdminTournamentsActivity" />
+        <activity
+            android:name=".Activities.Admin.AdminVenuesActivity"
+            android:label="@string/title_activity_admin_venues"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.Admin.AdminNewTournament"></activity>
     </application>
 
 </manifest>

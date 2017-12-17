@@ -10,6 +10,7 @@ import badminton_association.com.example.honza.badmintonassociation.Models.Admin
 import badminton_association.com.example.honza.badmintonassociation.Models.Participate;
 import badminton_association.com.example.honza.badmintonassociation.Models.Player;
 import badminton_association.com.example.honza.badmintonassociation.Models.Tournament;
+import badminton_association.com.example.honza.badmintonassociation.Models.Venue;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -39,5 +40,11 @@ public interface HTTPInterface {
 
     @GET("/tournament/all")
     void getAllTournaments(Callback<List<Tournament>> cb);
+
+    @GET("/venue/all")
+    void getAllVenues(Callback<List<Venue>> cb);
+
+    @POST(("/tournament/post"))
+    void postTournament(@Body Tournament tournament, Callback<Object> cb);
 
 }

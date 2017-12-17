@@ -108,8 +108,8 @@ public class PlayerTournamentsListAdapter extends RecyclerView.Adapter<PlayerTou
 
         public void populateRow(Tournament tournament, int position){
             name.setText(tournament.getName());
-            startdate.setText(tournament.getStartDate().toString());
-            endDate.setText(tournament.getEndDate().toString());
+            startdate.setText(tournament.getStartDate());
+            endDate.setText(tournament.getEndDate());
             tournamentID = tournament.getId();
         }
     }

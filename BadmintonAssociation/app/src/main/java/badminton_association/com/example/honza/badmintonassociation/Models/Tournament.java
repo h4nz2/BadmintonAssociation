@@ -1,27 +1,27 @@
 package badminton_association.com.example.honza.badmintonassociation.Models;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by Honza on 16/12/2017.
  */
 
-public class Tournament extends Model{
+public class Tournament extends Model implements Serializable{
 
     private String startDate;
     private String endDate;
     private String name;
-    private Integer venueID;
+    private Venue venue;
 
     public Tournament() {
     }
 
-    public Tournament(Integer id, String startDate, String endDate, String name, Integer venueID) {
+    public Tournament(Integer id, String startDate, String endDate, String name, Venue venue) {
         super.setId(id);
         this.startDate = startDate;
         this.endDate = endDate;
         this.name = name;
-        this.venueID = venueID;
+        this.venue = venue;
     }
 
     public String getStartDate() {
@@ -48,12 +48,12 @@ public class Tournament extends Model{
         this.name = name;
     }
 
-    public Integer getVenueID() {
-        return venueID;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueID(Integer venueID) {
-        this.venueID = venueID;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
 }

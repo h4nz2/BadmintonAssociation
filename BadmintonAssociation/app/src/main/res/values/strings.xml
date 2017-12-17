@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BadmintonAssociation</string>
+    <string name="title_activity_admin_venues">AdminVenuesActivity</string>
 </resources>

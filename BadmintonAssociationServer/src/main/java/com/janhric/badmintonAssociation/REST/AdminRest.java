@@ -5,6 +5,7 @@
  */
 package com.janhric.badmintonAssociation.REST;
 
+import com.janhric.badmintonAssociation.Gateways.AdminGateway;
 import com.janhric.badmintonAssociation.entities.Admin;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,9 +20,6 @@ import javax.ws.rs.QueryParam;
 
 @Path("/admin")
 public class AdminRest {
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
-    private static final String DB_NAME = "badminton";
     
     @GET
     @Path("/get")
@@ -29,18 +27,9 @@ public class AdminRest {
     public Admin getAdmin(@QueryParam("id") int id) {
         Admin admin = new Admin();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/" + DB_NAME, USERNAME, PASSWORD);            
-            String query = "select * from admin where id=?";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt(1, id);
-            ResultSet resultSet = preparedStmt.executeQuery();
-            if(resultSet.first()){
-                admin.setId(resultSet.getInt("id"));
-                admin.setName(resultSet.getString("name"));
-                admin.setPhone(resultSet.getString("phone"));
-                admin.setAddress(resultSet.getString("address"));
-            }      
-            connection.close();
+            AdminGateway gateway = new AdminGateway();
+            admin = gateway.getAdmin(id);
+            gateway.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,21 +40,12 @@ public class AdminRest {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Admin> getAdmins() {
-        ArrayList<Admin> admins = new ArrayList<Admin>();
+        List<Admin> admins = new ArrayList<Admin>();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/" + DB_NAME, USERNAME, PASSWORD);            
-            Statement statement = connection.createStatement();            
-            ResultSet resultSet = statement.executeQuery("select * from admin"); 
-            while(resultSet.next()){
-                Admin admin = new Admin();
-                admin.setId(resultSet.getInt("id"));
-                admin.setName(resultSet.getString("name"));
-                admin.setPhone(resultSet.getString("phone"));
-                admin.setAddress(resultSet.getString("address"));
-                admins.add(admin);
-            }      
-            connection.close();
+            AdminGateway gateway = new AdminGateway();
+            admins = gateway.getAllAdmins();
+            gateway.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,14 +57,9 @@ public class AdminRest {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postAdmin(Admin admin) {
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/" + DB_NAME, USERNAME, PASSWORD); 
-            String query = "insert into admin(name, phone, address) values(?, ?, ?)";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString (1, admin.getName());
-            preparedStmt.setString(2, admin.getPhone());
-            preparedStmt.setString(3, admin.getAddress());            
-            preparedStmt.execute();
-            
+            AdminGateway gateway = new AdminGateway();
+            gateway.postAdmin(admin);   
+            gateway.closeConnection();
             return Response.status(201).entity(admin).build();
         } catch (Exception e){
             return Response.status(500).build();

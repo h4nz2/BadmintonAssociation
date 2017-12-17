@@ -1,6 +1,7 @@
 package badminton_association.com.example.honza.badmintonassociation.Activities.Admin;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,15 +59,18 @@ public class AdminMenuActivity extends AppCompatActivity {
         players.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tournaments.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(AdminMenuActivity.this, AdminTournamentsActivity.class);
-                        intent.putExtra(ADMIN, mAdmin);
-                        startActivity(intent);
-                    }
-                });
+
             }
         });
+
+        tournaments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminMenuActivity.this, AdminTournamentsActivity.class);
+                intent.putExtra(ADMIN, mAdmin);
+                startActivity(intent);
+            }
+        });
+
     }
 }

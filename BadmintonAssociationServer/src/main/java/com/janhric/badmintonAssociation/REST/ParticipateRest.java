@@ -5,6 +5,7 @@
  */
 package com.janhric.badmintonAssociation.REST;
 
+import com.janhric.badmintonAssociation.Gateways.ParticipateGateway;
 import com.janhric.badmintonAssociation.entities.ParticipatePK;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,23 +21,15 @@ import javax.ws.rs.core.Response;
  * @author Honza
  */
 @Path("/participate")
-public class ParticipateRest {
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
-    private static final String DB_NAME = "badminton";
-    
+public class ParticipateRest {   
     @POST
     @Path("/post")
     @Produces(MediaType.APPLICATION_JSON)
     public Response newRecord(ParticipatePK participate) {
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/" + DB_NAME, USERNAME, PASSWORD); 
-            String query = "insert into participate(playerID, tournamentID) values(?, ?)";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt (1, participate.getPlayerID());
-            preparedStmt.setInt(2, participate.getTournamentID());
-            preparedStmt.execute();
-            
+            ParticipateGateway gateway = new ParticipateGateway();
+            gateway.createRecord(participate);
+            gateway.closeConnection();
             return Response.status(201).build();
         } catch (Exception e){
             return Response.status(500).entity(e.getMessage()).build();
