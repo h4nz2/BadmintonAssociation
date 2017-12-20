@@ -15,7 +15,7 @@ import java.util.List;
  * @author Honza
  */
 public class PlayerGateway extends Gateway{
-    public PlayerGateway() throws SQLException{
+    public PlayerGateway() {
         super();
     }
     
@@ -30,7 +30,7 @@ public class PlayerGateway extends Gateway{
         return listFromResultSet(preparedStmt.executeQuery()).get(0);
     }
     
-    public void postPlayer(Player player) throws SQLException{
+    public void postPlayer(Player player) throws SQLException {
         //update
         if(player.getId() > 0){
             String query = "update player set name=?, phone=?, address=?, gender=? where id=?";
@@ -53,6 +53,13 @@ public class PlayerGateway extends Gateway{
         }
     }
     
+    public void deletePlayer(Player player) throws SQLException {
+        String query = "delete from player where id=?";
+        PreparedStatement preparedStmt = getPreparedStatement(query);
+        preparedStmt.setInt(1, player.getId());
+        preparedStmt.execute();
+    }
+    
     private List<Player> listFromResultSet(ResultSet resultSet) throws SQLException{
         List<Player> players = new ArrayList<Player>();
         
@@ -68,4 +75,5 @@ public class PlayerGateway extends Gateway{
         
         return players;
     }
+    
 }

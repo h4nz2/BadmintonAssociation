@@ -13,7 +13,7 @@ import java.sql.*;
  * @author Honza
  */
 public class ParticipateGateway extends Gateway{
-    public ParticipateGateway() throws SQLException{
+    public ParticipateGateway() {
         super();
     }
     

@@ -27,6 +27,7 @@ public class Tournament implements Serializable {
     private Venue venue;
 
     public Tournament() {
+        this.id = 0;
     }
 
     public Tournament(Integer id) {

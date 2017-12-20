@@ -42,4 +42,12 @@ public class VenueGateway extends Gateway {
         }
         return venues;
     }
+    
+    public void createVenue(Venue venue) throws SQLException{
+        String query = "insert into venue(name, address) values (?, ?)";
+        PreparedStatement preparedStmt = getPreparedStatement(query);
+        preparedStmt.setString(1, venue.getName());
+        preparedStmt.setString(2, venue.getAddress());
+        preparedStmt.execute();
+    }
 }

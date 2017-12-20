@@ -114,6 +114,7 @@ public class AdminNewTournament extends AppCompatActivity {
             venueNames.add(venue.getName());
         }
         venuesSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, venueNames));
-        venuesSpinner.setSelection(venueNames.indexOf(mTournament.getVenue().getName()));
+        if(mTournament.getVenue() != null)
+            venuesSpinner.setSelection(venueNames.indexOf(mTournament.getVenue().getName()));
     }
 }

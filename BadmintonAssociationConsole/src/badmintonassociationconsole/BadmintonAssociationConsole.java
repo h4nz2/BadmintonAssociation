@@ -21,7 +21,7 @@ public class BadmintonAssociationConsole {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("*** Badminton association ***/n");
+        System.out.println("*** Badminton association ***\n");
         System.out.println("1 - Admin menu\n"
                 + "2 - Player menu\n"
                 + "0 - Exit");    
@@ -39,9 +39,10 @@ public class BadmintonAssociationConsole {
                 default:
                     System.out.println("!!! Invalid choice. !!!");
             }
-            System.out.println("*** Badminton association ***/n");
+            System.out.println("*** Badminton association ***\n");
             System.out.println("1 - Admin menu\n"
-                    + "2 - Player menu");
+                    + "2 - Player menu\n"
+                    + "0 - Exit");
         }
             
         }

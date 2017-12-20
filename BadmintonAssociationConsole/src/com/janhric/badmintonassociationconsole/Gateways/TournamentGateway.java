@@ -17,7 +17,7 @@ import java.util.List;
 public class TournamentGateway extends Gateway{
     private VenueGateway mVenueGateway;
     
-    public TournamentGateway() throws SQLException {
+    public TournamentGateway(){
         super();
         mVenueGateway = new VenueGateway();
     }
